@@ -43,7 +43,7 @@ export function Navbar() {
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-medium hidden sm:block">
-                Sbet Siddaganga Institute of Technology
+                Siddaganga Institute of Technology
               </p>
             </div>
           </Link>
@@ -52,11 +52,10 @@ export function Navbar() {
           <nav className="hidden md:flex items-center gap-1">
             <Link
               href="/events"
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                isActive('/events')
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/events')
                   ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/30'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-              }`}
+                }`}
             >
               <Calendar className="w-4 h-4" />
               Events
@@ -66,22 +65,20 @@ export function Navbar() {
               <>
                 <Link
                   href="/dashboard"
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                    isActive('/dashboard')
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/dashboard')
                       ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/30'
                       : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-                  }`}
+                    }`}
                 >
                   <LayoutDashboard className="w-4 h-4" />
                   Dashboard
                 </Link>
                 <Link
                   href="/my-bookings"
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                    isActive('/my-bookings')
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/my-bookings')
                       ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/30'
                       : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-                  }`}
+                    }`}
                 >
                   <Ticket className="w-4 h-4" />
                   My Passes
@@ -92,11 +89,10 @@ export function Navbar() {
             {(user?.role === 'ORGANIZER' || user?.role === 'ADMIN') && (
               <Link
                 href="/organizer/dashboard"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                  isActive('/organizer/dashboard')
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/organizer/dashboard')
                     ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/30'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-                }`}
+                  }`}
               >
                 <LayoutDashboard className="w-4 h-4" />
                 Organizer Studio
@@ -106,11 +102,10 @@ export function Navbar() {
             {(user?.role === 'GATE_STAFF' || user?.role === 'ADMIN') && (
               <Link
                 href="/gate/validate"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                  isActive('/gate/validate')
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/gate/validate')
                     ? 'bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 shadow-glow-emerald'
                     : 'text-emerald-400 hover:bg-emerald-950/40 border border-emerald-800/40'
-                }`}
+                  }`}
               >
                 <QrCode className="w-4 h-4" />
                 Gate Scanner
@@ -120,11 +115,10 @@ export function Navbar() {
             {user?.role === 'ADMIN' && (
               <Link
                 href="/admin/dashboard"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                  isActive('/admin/dashboard')
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/admin/dashboard')
                     ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-                }`}
+                  }`}
               >
                 <Shield className="w-4 h-4" />
                 Admin
@@ -158,11 +152,10 @@ export function Navbar() {
                     <button
                       key={r}
                       onClick={() => switchDemoRole(r)}
-                      className={`w-full text-left px-2.5 py-1.5 text-xs rounded-lg transition flex items-center justify-between ${
-                        user?.role === r
+                      className={`w-full text-left px-2.5 py-1.5 text-xs rounded-lg transition flex items-center justify-between ${user?.role === r
                           ? 'bg-indigo-600 text-white font-semibold'
                           : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-                      }`}
+                        }`}
                     >
                       <span>{r.replace('_', ' ')}</span>
                       {user?.role === r && <span className="text-[10px]">Active</span>}
@@ -285,9 +278,8 @@ export function Navbar() {
                   switchDemoRole(r);
                   setMobileMenuOpen(false);
                 }}
-                className={`px-2 py-1 text-xs rounded ${
-                  user?.role === r ? 'bg-indigo-600 text-white font-bold' : 'bg-slate-800 text-slate-300'
-                }`}
+                className={`px-2 py-1 text-xs rounded ${user?.role === r ? 'bg-indigo-600 text-white font-bold' : 'bg-slate-800 text-slate-300'
+                  }`}
               >
                 {r.replace('_', ' ')}
               </button>
