@@ -21,6 +21,9 @@ import {
   CheckCircle2,
   AlertCircle,
   Sparkles,
+  QrCode,
+  ArrowLeft,
+  Share2,
 } from 'lucide-react';
 
 export default function EventDetailPage() {
@@ -124,22 +127,42 @@ export default function EventDetailPage() {
   const fillPercentage = Math.round((bookedCount / event.totalCapacity) * 100);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      {/* Navigation breadcrumb */}
+      <div className="flex items-center justify-between">
+        <Link
+          href="/events"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back to Events Catalog</span>
+        </Link>
+
+        <span className="text-xs font-mono text-slate-500">
+          Event ID: {event.id.slice(0, 8)}
+        </span>
+      </div>
+
       {/* Event Hero Banner */}
       <div className="relative rounded-3xl overflow-hidden glass-panel border border-slate-800">
-        <div className="h-64 sm:h-80 w-full relative">
+        <div className="h-64 sm:h-96 w-full relative">
           {event.bannerUrl ? (
             <img src={event.bannerUrl} alt={event.title} className="w-full h-full object-cover" />
           ) : (
             <div className="w-full h-full bg-gradient-to-r from-indigo-950 via-slate-900 to-slate-950" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
 
           {/* Top Chips */}
           <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900/80 text-indigo-400 border border-indigo-500/30 backdrop-blur-md">
-              {event.category}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900/80 text-indigo-300 border border-indigo-500/30 backdrop-blur-md">
+                {event.category}
+              </span>
+              <span className="hidden sm:inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-900/80 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
+                SIT TUMAKURU
+              </span>
+            </div>
             <StatusBadge status={event.status} />
           </div>
 
@@ -148,10 +171,20 @@ export default function EventDetailPage() {
             <h1 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
               {event.title}
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300 flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-rose-400 shrink-0" />
-              <span>{event.venue}</span>
-            </p>
+            <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-300">
+              <span className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4 text-indigo-400 shrink-0" />
+                <span>{formatDate(event.startDateTime)}</span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-4 h-4 text-indigo-400 shrink-0" />
+                <span>{formatTime(event.startDateTime)} — {formatTime(event.endDateTime)}</span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-rose-400 shrink-0" />
+                <span>{event.venue}</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -160,10 +193,10 @@ export default function EventDetailPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Col: Description & Logistics */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800 space-y-4">
+          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-4">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-indigo-400" />
-              About This Event
+              Event Overview & Instructions
             </h2>
             <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-line">
               {event.description}
@@ -172,45 +205,47 @@ export default function EventDetailPage() {
 
           {/* Schedule & Organizer Details */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-2">
+            <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-2">
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                <Clock className="w-4 h-4 text-indigo-400" /> Date & Schedule
+                <Clock className="w-4 h-4 text-indigo-400" /> Schedule & Timings
               </div>
               <p className="font-bold text-white text-sm">{formatDate(event.startDateTime)}</p>
               <p className="text-xs text-slate-400 font-mono">
-                {formatTime(event.startDateTime)} — {formatTime(event.endDateTime)}
+                {formatTime(event.startDateTime)} to {formatTime(event.endDateTime)}
               </p>
+              <p className="text-[11px] text-slate-500 pt-1">Gate entry closes 15m after start</p>
             </div>
 
-            <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-2">
+            <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-2">
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                <Building className="w-4 h-4 text-emerald-400" /> Organizer
+                <Building className="w-4 h-4 text-emerald-400" /> Faculty Coordinator
               </div>
               <p className="font-bold text-white text-sm">{event.organizer?.name || 'SIT Faculty / Club'}</p>
-              <p className="text-xs text-slate-400">{event.organizer?.department || 'SIT Campus'}</p>
+              <p className="text-xs text-slate-400">{event.organizer?.department || 'Department Coordinator'}</p>
+              <p className="text-[11px] text-emerald-400 font-mono pt-1">Verified Host</p>
             </div>
           </div>
         </div>
 
         {/* Right Col: Capacity Meter & Action Card */}
         <div className="lg:col-span-5 space-y-6 sticky top-24">
-          <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-indigo-500/30 shadow-ticket space-y-6">
+          <div className="glass-panel-elevated p-6 sm:p-8 rounded-3xl border border-indigo-500/30 shadow-glow-indigo space-y-6">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div>
-                <p className="text-xs text-slate-400">Official Pass</p>
-                <p className="text-base font-bold text-white">Student Free Pass</p>
+                <p className="text-[11px] uppercase font-mono text-slate-400">Pass Type</p>
+                <p className="text-base font-extrabold text-white">Student Campus Pass</p>
               </div>
-              <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold">
-                Verified Event
+              <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold font-mono">
+                COMPLIMENTARY
               </span>
             </div>
 
             {/* Live Capacity Gauge */}
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <div className="flex items-center justify-between text-xs">
                 <span className="text-slate-400 flex items-center gap-1.5 font-medium">
                   <Users className="w-4 h-4 text-slate-400" />
-                  Remaining Capacity
+                  Venue Seating Availability
                 </span>
                 <span
                   className={`font-mono font-bold ${
@@ -221,7 +256,7 @@ export default function EventDetailPage() {
                       : 'text-emerald-400'
                   }`}
                 >
-                  {isSoldOut ? '0 Available' : `${event.availableCapacity} / ${event.totalCapacity} Seats`}
+                  {isSoldOut ? '0 Seats Left' : `${event.availableCapacity} / ${event.totalCapacity} Available`}
                 </span>
               </div>
               <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
@@ -231,19 +266,20 @@ export default function EventDetailPage() {
                       ? 'bg-rose-500'
                       : fillPercentage > 85
                       ? 'bg-amber-500'
-                      : 'bg-indigo-500'
+                      : 'bg-emerald-500'
                   }`}
                   style={{ width: `${Math.min(100, fillPercentage)}%` }}
                 />
               </div>
-              <p className="text-[11px] text-slate-500 text-right">
-                {bookedCount} student{bookedCount === 1 ? '' : 's'} registered
-              </p>
+              <div className="flex items-center justify-between text-[11px] text-slate-500 font-mono">
+                <span>{bookedCount} Registered</span>
+                <span>{fillPercentage}% Occupied</span>
+              </div>
             </div>
 
             {/* Error Message */}
             {bookingError && (
-              <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs flex items-center gap-2">
+              <div className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{bookingError}</span>
               </div>
@@ -252,62 +288,69 @@ export default function EventDetailPage() {
             {/* Booking State Actions */}
             {existingBooking ? (
               <div className="space-y-3">
-                <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 shrink-0" />
-                  <span>You have an active pass reserved for this event!</span>
+                <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2.5">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <span>You have an active verified pass reserved for this event!</span>
                 </div>
                 <Link
                   href={`/tickets/${existingBooking.id}`}
-                  className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-glow-emerald flex items-center justify-center gap-2 transition"
+                  className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-glow-emerald flex items-center justify-center gap-2 transition"
                 >
                   <Ticket className="w-4 h-4" />
-                  <span>View My Digital Pass</span>
+                  <span>Open My Digital QR Pass</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             ) : bookingSuccess ? (
-              <div className="space-y-3 text-center">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto shadow-glow-emerald">
+              <div className="space-y-4 text-center">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto shadow-glow-emerald">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-white text-base">Seat Reserved Successfully!</h3>
-                <p className="text-xs text-slate-400">
-                  Your ticket code is <span className="font-mono text-indigo-400 font-bold">{bookingSuccess.ticket.ticketCode}</span>
-                </p>
+                <div className="space-y-1">
+                  <h3 className="font-bold text-white text-base">Seat Reserved Successfully!</h3>
+                  <p className="text-xs text-slate-400">
+                    Your unique ticket code is{' '}
+                    <span className="font-mono text-indigo-400 font-bold">
+                      {bookingSuccess.ticket.ticketCode}
+                    </span>
+                  </p>
+                </div>
                 <Link
                   href={`/tickets/${bookingSuccess.booking.id}`}
-                  className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-glow-indigo flex items-center justify-center gap-2 transition block"
+                  className="w-full py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-glow-indigo flex items-center justify-center gap-2 transition block"
                 >
                   <Ticket className="w-4 h-4" />
                   <span>Open Digital QR Pass</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             ) : (
               <button
                 onClick={handleBookTicket}
                 disabled={bookingInProgress || isSoldOut || event.status !== 'PUBLISHED'}
-                className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-glow-indigo flex items-center justify-center gap-2 transition disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs sm:text-sm shadow-glow-indigo flex items-center justify-center gap-2 transition disabled:opacity-50 disabled:pointer-events-none"
               >
                 <Ticket className="w-4 h-4" />
                 <span>
                   {bookingInProgress
-                    ? 'Processing Transaction...'
+                    ? 'Reserving Seat...'
                     : isSoldOut
                     ? 'Event Full (Sold Out)'
                     : event.status !== 'PUBLISHED'
-                    ? `Not Open (${event.status})`
-                    : 'Reserve My Pass (Instant)'}
+                    ? `Registration Closed (${event.status})`
+                    : 'Reserve My Student Pass (Instant)'}
                 </span>
               </button>
             )}
 
-            <div className="pt-2 text-[11px] text-slate-400 space-y-1">
+            <div className="pt-2 text-[11px] text-slate-400 space-y-1.5 border-t border-slate-800/80">
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>Zero duplicate booking protection</span>
+                <span>Duplicate booking protection active</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Users className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                <span>Strict atomic capacity decrement</span>
+                <QrCode className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                <span>Instant cryptographic turnstile token</span>
               </div>
             </div>
           </div>

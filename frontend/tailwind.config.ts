@@ -10,43 +10,46 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        campus: {
-          50: '#f5f7ff',
-          100: '#ebedff',
-          200: '#d6dcff',
-          300: '#b3beff',
-          400: '#8593ff',
-          500: '#5c67f8',
-          600: '#4347ee',
-          700: '#3535d5',
-          800: '#2c2daf',
-          900: '#282b8a',
-          950: '#171852',
+        sit: {
+          navy: '#0b1329',
+          dark: '#070b14',
+          card: '#0f172a',
+          accent: '#6366f1',
+          gold: '#f59e0b',
+          emerald: '#10b981',
+          crimson: '#ef4444',
         },
         slate: {
-          850: '#151f32',
+          850: '#131d31',
           925: '#0b1120',
-          950: '#070b14',
+          950: '#060913',
         },
       },
       boxShadow: {
-        'glow-indigo': '0 0 25px -5px rgba(99, 102, 241, 0.4)',
-        'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.4)',
-        'glow-amber': '0 0 25px -5px rgba(245, 158, 11, 0.4)',
-        'glow-rose': '0 0 25px -5px rgba(244, 63, 94, 0.4)',
-        'ticket': '0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.2)',
+        'glow-indigo': '0 0 30px -5px rgba(99, 102, 241, 0.35)',
+        'glow-emerald': '0 0 30px -5px rgba(16, 185, 129, 0.35)',
+        'glow-amber': '0 0 30px -5px rgba(245, 158, 11, 0.35)',
+        'glow-crimson': '0 0 30px -5px rgba(239, 68, 68, 0.35)',
+        'pass': '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 25px rgba(99, 102, 241, 0.15)',
+        'kiosk': '0 20px 40px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'Menlo', 'monospace'],
       },
       animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
+        'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float-gentle': 'floatGentle 5s ease-in-out infinite',
+        'shimmer': 'shimmer 6s linear infinite',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
+        floatGentle: {
+          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+          '50%': { transform: 'translateY(-6px) rotate(0.5deg)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
         },
       },
     },
