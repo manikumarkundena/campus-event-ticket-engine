@@ -5,9 +5,9 @@ import { Navbar } from '@/components/ui/Navbar';
 import { Footer } from '@/components/ui/Footer';
 
 export const metadata: Metadata = {
-  title: 'Campus Event Ticketing Engine | SIT Tumakuru',
+  title: 'EVENTRA | Campus Events & Digital Entry',
   description:
-    'Production-grade campus event lifecycle management, transactional digital ticketing, and gate QR validation for Siddaganga Institute of Technology.',
+    'Campus event discovery, digital ticket issuance, and gate entry verification platform deployed for Siddaganga Institute of Technology.',
 };
 
 export default function RootLayout({

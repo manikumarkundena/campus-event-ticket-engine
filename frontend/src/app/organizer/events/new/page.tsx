@@ -42,7 +42,7 @@ export default function NewEventPage() {
         generatedDesc = `${formData.title} brings together visionary students and engineers across Karnataka to build transformative solutions.\n\nTracks include:\n• Autonomous Artificial Intelligence & Agentic Workflows\n• Cloud-Native DevOps & Cyber-Physical Security\n• CleanTech & Sustainable Campus Solutions\n\nMentorship by industry leaders, cloud credits, and cash awards for winning teams. Food, refreshments, and high-speed campus WiFi provided.`;
       } else if (titleLower.includes('dance') || titleLower.includes('music') || titleLower.includes('cultural') || titleLower.includes('fest')) {
         recommendedCategory = 'CULTURAL';
-        generatedDesc = `Experience the vibrant spirit of SIT at ${formData.title}!\n\nFeaturing electrifying stage performances, competitive showcases, and special guest appearances. Open to all students, faculty, and invited college delegations.\n\nEntry requires this verified digital pass at campus auditorium turnstiles.`;
+        generatedDesc = `Experience the vibrant spirit of SIT at ${formData.title}!\n\nFeaturing electrifying stage performances, competitive showcases, and special guest appearances. Open to all students, faculty, and invited college delegations.\n\nEntry requires this verified digital pass at the campus auditorium entrance.`;
       } else if (titleLower.includes('cricket') || titleLower.includes('sports') || titleLower.includes('football')) {
         recommendedCategory = 'SPORTS';
         generatedDesc = `Annual inter-departmental championship for ${formData.title} at SIT Sports Stadium.\n\nCompete for the championship cup and certificates of excellence. High-energy matches, professional referees, and campus commentary.`;
@@ -212,7 +212,7 @@ export default function NewEventPage() {
                 className="px-2.5 py-1 text-[11px] rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5 transition font-medium"
               >
                 <Wand2 className="w-3.5 h-3.5 text-indigo-400" />
-                <span>{aiGenerating ? 'AI Generating...' : '✨ Polish with AI Event Assistant'}</span>
+                <span>{aiGenerating ? 'Generating Description...' : 'Auto-fill Template Description'}</span>
               </button>
             </div>
             <textarea

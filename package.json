@@ -1,0 +1,14 @@
+{
+  "name": "campus-event-ticketing-engine",
+  "version": "1.0.0",
+  "description": "Campus Event Ticketing Engine - SIT SPM ABL-1",
+  "private": true,
+  "scripts": {
+    "dev": "node run-dev.js",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "start": "node run-dev.js",
+    "test": "npm --prefix backend test"
+  }
+}

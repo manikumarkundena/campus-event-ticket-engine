@@ -43,7 +43,7 @@ export default function RegisterPage() {
             <Ticket className="w-6 h-6" />
           </div>
           <h1 className="text-2xl font-bold text-white tracking-tight">Create Student Account</h1>
-          <p className="text-xs text-slate-400">Join SIT Pass for instant campus event registrations</p>
+          <p className="text-xs text-slate-400">Join EVENTRA for campus event registrations at SIT</p>
         </div>
 
         <div className="glass-panel p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-800 space-y-5">

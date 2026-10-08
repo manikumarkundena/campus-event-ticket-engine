@@ -195,7 +195,7 @@ export default function EventDetailPage() {
         <div className="lg:col-span-7 space-y-6">
           <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-4">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-indigo-400" />
+              <Calendar className="w-4 h-4 text-indigo-400" />
               Event Overview & Instructions
             </h2>
             <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-line">
@@ -350,7 +350,7 @@ export default function EventDetailPage() {
               </div>
               <div className="flex items-center gap-1.5">
                 <QrCode className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                <span>Instant cryptographic turnstile token</span>
+                <span>Instant digital QR pass issuance</span>
               </div>
             </div>
           </div>

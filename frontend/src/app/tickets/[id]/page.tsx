@@ -43,7 +43,7 @@ export default function TicketPresentationPage() {
         <h2 className="text-lg font-bold text-white">Ticket Not Found</h2>
         <p className="text-xs text-slate-400">Could not retrieve ticket details or unauthorized.</p>
         <Link href="/my-bookings" className="inline-block px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-semibold">
-          Back to My Passes
+          Back to My Tickets
         </Link>
       </div>
     );
@@ -57,7 +57,7 @@ export default function TicketPresentationPage() {
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to All Passes</span>
+          <span>Back to My Tickets</span>
         </Link>
         <span className="text-xs font-mono text-indigo-400 font-semibold">
           Ref: {booking.bookingReference}

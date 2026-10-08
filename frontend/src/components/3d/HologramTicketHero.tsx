@@ -149,17 +149,17 @@ export function HologramTicketHero() {
         {/* Holographic iridescent foil top banner */}
         <div className="h-2.5 w-full bg-gradient-to-r from-indigo-500 via-purple-500 via-emerald-400 to-amber-400 iridescent-foil" />
 
-        {/* Card Header: Institutional SIT Identity */}
+        {/* Card Header: EVENTRA & Institutional SIT Identity */}
         <div className="px-6 pt-5 pb-4 border-b border-slate-800/80 bg-slate-900/60 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-glow-indigo">
-              SIT
+              <Ticket className="w-4 h-4" />
             </div>
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-white">
-                Siddaganga Institute
+              <p className="text-xs font-extrabold uppercase tracking-wider text-white">
+                EVENTRA
               </p>
-              <p className="text-[10px] text-slate-400 font-mono">Tumakuru, Karnataka</p>
+              <p className="text-[10px] text-slate-400">Siddaganga Institute of Technology</p>
             </div>
           </div>
 
@@ -232,51 +232,51 @@ export function HologramTicketHero() {
             </div>
           </div>
         ) : (
-          /* Back Face: Turnstile Regulations & Security Token */
+          /* Back Face: Campus Admission Policy & Pass Verification */
           <div className="p-6 space-y-4">
             <div className="space-y-1">
               <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
-                TURNSTILE ENTRY REGULATIONS
+                CAMPUS ADMISSION POLICY
               </span>
-              <h4 className="font-bold text-white text-base">Campus Security Policy</h4>
+              <h4 className="font-bold text-white text-base">Entry Guidelines</h4>
             </div>
 
             <div className="space-y-2 text-xs text-slate-300 leading-relaxed bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800">
               <p className="flex items-start gap-1.5">
-                <span className="text-emerald-400 font-bold">1.</span> Single-entry cryptographic pass. Duplicate presentation at gate turnstiles triggers immediate lockout.
+                <span className="text-emerald-400 font-bold">1.</span> Single-entry digital pass. Duplicate presentation at the gate will be flagged.
               </p>
               <p className="flex items-start gap-1.5">
-                <span className="text-emerald-400 font-bold">2.</span> Carry physical college RFID ID card for USN verification at Main Gate 1.
+                <span className="text-emerald-400 font-bold">2.</span> Carry physical college student ID card for identity verification at the entrance.
               </p>
               <p className="flex items-start gap-1.5">
-                <span className="text-emerald-400 font-bold">3.</span> Pass revoked if event is cancelled by faculty coordinators.
+                <span className="text-emerald-400 font-bold">3.</span> Pass valid only for the scheduled event and specified campus venue.
               </p>
             </div>
 
             <div className="pt-2 border-t border-slate-800/80 space-y-1 font-mono text-[11px]">
-              <p className="text-[10px] uppercase text-slate-400">Secure Cryptoseal Hash</p>
+              <p className="text-[10px] uppercase text-slate-400">Digital Pass Identifier</p>
               <p className="text-slate-300 truncate bg-slate-950 px-2.5 py-1.5 rounded-lg border border-slate-800">
-                0x7F2A...B941 (Opaque Token Verified)
+                PASS_TOKEN_VERIFIED_SIT_2026
               </p>
             </div>
           </div>
         )}
 
-        {/* Card Footer: Interactive Flip Action & Turnstile Simulation */}
+        {/* Card Footer: Interactive Flip Action & Gate Verification Link */}
         <div className="px-6 py-3 bg-slate-950/90 border-t border-slate-800/80 flex items-center justify-between text-xs">
           <button
             onClick={() => setIsFlipped(!isFlipped)}
             className="flex items-center gap-1.5 text-slate-400 hover:text-white transition font-medium"
           >
             <RefreshCw className="w-3.5 h-3.5 text-indigo-400" />
-            <span>{isFlipped ? 'Show Front Pass' : 'Inspect Security Details'}</span>
+            <span>{isFlipped ? 'Show Ticket Details' : 'View Admission Policy'}</span>
           </button>
 
           <Link
             href="/gate/validate"
             className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 transition"
           >
-            <span>Scan at Gate</span>
+            <span>Gate Verification</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>

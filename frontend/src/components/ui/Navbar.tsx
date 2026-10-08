@@ -14,7 +14,7 @@ import {
   Menu,
   X,
   ChevronDown,
-  Sparkles,
+  UserCheck,
 } from 'lucide-react';
 import { UserRole } from '@/types';
 
@@ -30,20 +30,20 @@ export function Navbar() {
     <header className="sticky top-0 z-50 glass-panel border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Brand Logo & Academic Identity */}
+          {/* Brand Logo & Product Identity */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-500 flex items-center justify-center shadow-glow-indigo text-white group-hover:scale-105 transition-transform">
               <Ticket className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-lg text-white tracking-tight">SIT Pass</span>
-                <span className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-semibold">
-                  ABL-1
+                <span className="font-extrabold text-lg text-white tracking-wider">EVENTRA</span>
+                <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-800/90 text-slate-300 border border-slate-700 font-medium hidden sm:inline-block">
+                  SIT Tumakuru
                 </span>
               </div>
-              <p className="text-xs text-slate-400 font-medium hidden sm:block">
-                Siddaganga Institute of Technology
+              <p className="text-[11px] text-slate-400 font-medium">
+                Campus Events & Digital Entry
               </p>
             </div>
           </Link>
@@ -81,7 +81,7 @@ export function Navbar() {
                     }`}
                 >
                   <Ticket className="w-4 h-4" />
-                  My Passes
+                  My Tickets
                 </Link>
               </>
             )}
@@ -108,7 +108,7 @@ export function Navbar() {
                   }`}
               >
                 <QrCode className="w-4 h-4" />
-                Gate Scanner
+                Gate Verification
               </Link>
             )}
 
@@ -128,15 +128,15 @@ export function Navbar() {
 
           {/* Right Action Section: Demo Switcher & User Profile */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Quick Demo Switcher Dropdown */}
+            {/* Quick Demo Role Switcher Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setDemoDropdownOpen(!demoDropdownOpen)}
                 className="flex items-center gap-2 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-indigo-300 border border-slate-700 transition"
-                title="Quickly switch demo role for presentation"
+                title="Switch demo user role"
               >
-                <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                <span>Role: {user?.role || 'Guest'}</span>
+                <UserCheck className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Role: {user?.role ? user.role.replace('_', ' ') : 'Guest'}</span>
                 <ChevronDown className="w-3.5 h-3.5 opacity-60" />
               </button>
 
@@ -146,7 +146,7 @@ export function Navbar() {
                   onClick={() => setDemoDropdownOpen(false)}
                 >
                   <p className="text-[11px] font-semibold text-slate-400 px-2 py-1 uppercase tracking-wider">
-                    Switch Demo Account:
+                    Select User Role:
                   </p>
                   {(['STUDENT', 'ORGANIZER', 'GATE_STAFF', 'ADMIN'] as UserRole[]).map((r) => (
                     <button
@@ -169,7 +169,11 @@ export function Navbar() {
               <div className="flex items-center gap-3 pl-2 border-l border-slate-800">
                 <div className="text-right">
                   <p className="text-xs font-medium text-white">{user.name}</p>
-                  <p className="text-[11px] text-slate-400 font-mono">{user.department || user.email}</p>
+                  <p className="text-[11px] text-slate-400 font-mono">
+                    {user.department?.toLowerCase().includes('information')
+                      ? 'Computer Science & Engineering'
+                      : user.department || user.email}
+                  </p>
                 </div>
                 <button
                   onClick={logout}
@@ -234,7 +238,7 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800"
               >
-                My Tickets & Passes
+                My Tickets
               </Link>
             </>
           )}
@@ -245,7 +249,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800"
             >
-              Organizer Dashboard
+              Organizer Studio
             </Link>
           )}
 
@@ -255,7 +259,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 rounded-lg text-sm font-medium text-emerald-400 bg-emerald-950/30"
             >
-              Gate Validation Scanner
+              Gate Verification
             </Link>
           )}
 
@@ -265,7 +269,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 rounded-lg text-sm font-medium text-purple-400"
             >
-              Admin Console
+              Admin
             </Link>
           )}
 

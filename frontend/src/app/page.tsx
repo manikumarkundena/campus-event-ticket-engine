@@ -65,9 +65,11 @@ export default function LandingPage() {
           <div className="mb-6 flex items-center justify-center lg:justify-start">
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-panel border border-indigo-500/30 text-xs font-semibold text-slate-200">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span className="font-mono text-indigo-300 font-bold">SIT TUMAKURU</span>
+              <span className="font-mono text-indigo-300 font-bold">EVENTRA</span>
               <span className="text-slate-600">•</span>
-              <span className="text-slate-300">Campus Event Ticketing & Turnstile Engine</span>
+              <span className="text-slate-300">Campus Events & Digital Entry</span>
+              <span className="text-slate-600 hidden sm:inline">•</span>
+              <span className="text-slate-400 hidden sm:inline">Siddaganga Institute of Technology</span>
             </div>
           </div>
 
@@ -75,16 +77,14 @@ export default function LandingPage() {
             {/* Left Col: Hero Narrative & Primary CTAs */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
-                Campus Event Passes, <br />
+                Campus Events, <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-emerald-400">
                   Digitized & Verified.
                 </span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                An integrated platform for Siddaganga Institute of Technology students, faculty coordinators,
-                and campus gate staff. Replacing paper passes with atomic capacity reservations and instant
-                turnstile QR verification.
+                Discover campus events, reserve your place, manage digital tickets, and verify entry through one secure platform.
               </p>
 
               {/* Action Buttons */}
@@ -103,27 +103,27 @@ export default function LandingPage() {
                   className="w-full sm:w-auto px-6 py-3.5 rounded-xl glass-panel hover:bg-slate-800 text-emerald-400 font-semibold text-xs sm:text-sm border border-emerald-500/30 shadow-glow-emerald flex items-center justify-center gap-2 transition"
                 >
                   <QrCode className="w-4 h-4" />
-                  <span>Open Gate Turnstile Scanner</span>
+                  <span>Open Gate Verification</span>
                 </Link>
               </div>
 
-              {/* Institutional & Architectural Highlights (Truthful product facts, zero unmeasured claims) */}
+              {/* Product Capabilities (Truthful product facts, zero unmeasured claims) */}
               <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-800/80 text-left">
                 <div className="space-y-0.5">
-                  <p className="text-xs font-mono font-bold text-white uppercase">4 Role Portals</p>
-                  <p className="text-[11px] text-slate-400">Student, Faculty, Gate, Admin</p>
+                  <p className="text-xs font-mono font-bold text-white uppercase">Event Discovery</p>
+                  <p className="text-[11px] text-slate-400">Find upcoming campus events</p>
                 </div>
                 <div className="space-y-0.5">
-                  <p className="text-xs font-mono font-bold text-emerald-400 uppercase">23 Test Suites</p>
-                  <p className="text-[11px] text-slate-400">100% Automated CI passing</p>
+                  <p className="text-xs font-mono font-bold text-indigo-400 uppercase">Digital Tickets</p>
+                  <p className="text-[11px] text-slate-400">Access your registered event passes</p>
                 </div>
                 <div className="space-y-0.5">
-                  <p className="text-xs font-mono font-bold text-indigo-400 uppercase">Atomic Lock</p>
-                  <p className="text-[11px] text-slate-400">Zero duplicate tickets</p>
+                  <p className="text-xs font-mono font-bold text-emerald-400 uppercase">Secure Entry</p>
+                  <p className="text-[11px] text-slate-400">Verify tickets at the event gate</p>
                 </div>
                 <div className="space-y-0.5">
-                  <p className="text-xs font-mono font-bold text-purple-400 uppercase">Opaque QR Pass</p>
-                  <p className="text-[11px] text-slate-400">Cryptoseal turnstile token</p>
+                  <p className="text-xs font-mono font-bold text-purple-400 uppercase">Organizer Tools</p>
+                  <p className="text-[11px] text-slate-400">Create and manage campus events</p>
                 </div>
               </div>
             </div>
@@ -202,17 +202,17 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Campus Event Lifecycle Architecture Breakdown */}
+      {/* Campus Event Platform Workflow */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-            End-to-End System Workflow
+            End-to-End Workflow
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-            How SIT Pass Operates
+            How EVENTRA Operates
           </h2>
           <p className="text-xs sm:text-sm text-slate-400">
-            A unified pipeline serving organizers, registered students, and turnstile security personnel.
+            A unified platform for event organizers, attendees, and gate staff.
           </p>
         </div>
 
@@ -224,12 +224,11 @@ export default function LandingPage() {
             </div>
             <div className="space-y-1.5">
               <span className="text-[10px] font-mono font-bold text-indigo-400 uppercase tracking-wider">
-                Stage 01 • Faculty & Club Leads
+                Stage 01 • Organizers
               </span>
               <h3 className="text-lg font-bold text-white">Organizer Studio</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Define venue capacities, schedules, and event banners. Access live registration metrics, attendance
-                check-in rates, and AI-assisted description generation.
+                Define venue capacities, schedules, and event banners. Access live registration metrics and attendee check-in rates.
               </p>
             </div>
             <div className="pt-2">
@@ -243,7 +242,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Pillar 2: Atomic Reservation */}
+          {/* Pillar 2: Digital Passes */}
           <div className="glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-emerald-500/40 transition space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20 shadow-glow-emerald">
               <Lock className="w-6 h-6" />
@@ -252,10 +251,9 @@ export default function LandingPage() {
               <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-wider">
                 Stage 02 • Student Portal
               </span>
-              <h3 className="text-lg font-bold text-white">Transactional Booking</h3>
+              <h3 className="text-lg font-bold text-white">Digital Event Passes</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Concurrency-safe database transactions allocate seats when capacity is scarce. Issues an Apple Wallet-style
-                holographic digital pass with unique opaque QR tokens.
+                Reserve your place at campus events and receive an instant digital pass with QR verification and complete event details.
               </p>
             </div>
             <div className="pt-2">
@@ -269,19 +267,18 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Pillar 3: Turnstile Scanner */}
+          {/* Pillar 3: Gate Verification */}
           <div className="glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 hover:border-purple-500/40 transition space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/20">
               <QrCode className="w-6 h-6" />
             </div>
             <div className="space-y-1.5">
               <span className="text-[10px] font-mono font-bold text-purple-400 uppercase tracking-wider">
-                Stage 03 • Security Turnstile
+                Stage 03 • Gate Checkpoint
               </span>
-              <h3 className="text-lg font-bold text-white">Gate QR Verification</h3>
+              <h3 className="text-lg font-bold text-white">Gate Verification</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Instant gate check-in terminal with tactile audio cues and full-screen sensory status banners.
-                Blocks duplicate pass presentation and records immutable entry logs.
+                Instant gate check-in terminal with audio feedback and duplicate entry prevention for venue access.
               </p>
             </div>
             <div className="pt-2">
@@ -289,7 +286,7 @@ export default function LandingPage() {
                 href="/gate/validate"
                 className="text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1.5 transition"
               >
-                <span>Access Gate Scanner</span>
+                <span>Access Gate Verification</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -297,34 +294,34 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Academic Evaluation Callout Banner */}
+      {/* Campus Deployment Callout Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl glass-panel-elevated p-8 sm:p-10 border border-indigo-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
             <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">
-              Activity Based Learning – 1 Evaluation
+              Campus Event Infrastructure
             </span>
             <h3 className="text-xl sm:text-2xl font-extrabold text-white">
-              Ready for Live Defense & Testing
+              Deployed for Siddaganga Institute of Technology
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Use the top-right navbar menu to switch roles instantly between Student, Faculty Organizer,
-              Gate Staff, and Dean/Admin without manual credential entry.
+              Manage registrations, issue digital passes, and streamline gate check-ins across
+              Silver Jubilee Auditorium, Media Center, CS Labs, and campus venues.
             </p>
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
             <Link
-              href="/login"
+              href="/events"
               className="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-glow-indigo transition"
             >
-              Demo Portals Login
+              Explore Events
             </Link>
             <Link
-              href="/events"
+              href="/login"
               className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition"
             >
-              Browse Catalog
+              Sign In / Switch Role
             </Link>
           </div>
         </div>

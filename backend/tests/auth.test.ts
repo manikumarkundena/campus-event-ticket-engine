@@ -22,7 +22,7 @@ describe('Authentication & Authorization Suite', () => {
         password: testPassword,
         name: 'Test Student SIT',
         role: 'STUDENT',
-        department: 'Information Science',
+        department: 'Computer Science & Engineering',
         usn: `1SI22IS${Math.floor(100 + Math.random() * 899)}`,
       });
 

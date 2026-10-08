@@ -59,14 +59,14 @@ export default function MyBookingsPage() {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-indigo-400" />
             <span className="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">
-              Student Credential Wallet
+              Digital Passes
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            My Passes & Registrations
+            My Tickets
           </h1>
           <p className="text-xs sm:text-sm text-slate-400">
-            Digital encrypted turnstile access passes issued to your student account.
+            Access and present your verified digital event passes for campus entry.
           </p>
         </div>
 

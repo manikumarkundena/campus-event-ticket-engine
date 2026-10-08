@@ -61,16 +61,16 @@ export default function OrganizerDashboardPage() {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse" />
             <span className="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">
-              SIT Faculty & Club Studio
+              Siddaganga Institute of Technology • Organizer Studio
             </span>
             <span className="text-slate-600">•</span>
             <span className="text-xs text-slate-400">{user?.department || 'Department Coordinator'}</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Event Operations Command Center
+            Organizer Studio
           </h1>
           <p className="text-xs text-slate-300">
-            Real-time event capacity tracking, turnstile check-in stats, and roster management.
+            Real-time event capacity tracking, attendee check-in stats, and roster management.
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export default function OrganizerDashboardPage() {
             className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-semibold text-xs border border-slate-700 flex items-center gap-2 transition"
           >
             <QrCode className="w-4 h-4 text-emerald-400" />
-            <span>Gate Kiosk</span>
+            <span>Gate Verification</span>
           </Link>
           <Link
             href="/organizer/events/new"
@@ -130,7 +130,7 @@ export default function OrganizerDashboardPage() {
 
         <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-2">
           <div className="flex items-center justify-between text-xs text-slate-400">
-            <span>Turnstile Check-In Rate</span>
+            <span>Gate Check-In Rate</span>
             <ShieldCheck className="w-4 h-4 text-purple-400" />
           </div>
           <p className="text-3xl font-bold font-mono text-purple-400">

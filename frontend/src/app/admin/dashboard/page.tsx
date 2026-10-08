@@ -68,7 +68,7 @@ export default function AdminDashboardPage() {
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white">System Administration</h1>
           <p className="text-xs text-slate-400">
-            Siddaganga Institute of Technology • SPM ABL-1 Engine Management
+            Siddaganga Institute of Technology • Platform Administration
           </p>
         </div>
 

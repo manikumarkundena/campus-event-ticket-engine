@@ -38,8 +38,8 @@ async function main() {
       passwordHash: defaultPasswordHash,
       name: 'Prof. Kiran Kumar (IEEE SIT Counselor)',
       role: 'ORGANIZER',
-      department: 'Information Science & Engineering',
-      usn: 'FAC-SIT-ISE-04',
+      department: 'Computer Science & Engineering',
+      usn: 'FAC-SIT-CSE-04',
     },
   });
 

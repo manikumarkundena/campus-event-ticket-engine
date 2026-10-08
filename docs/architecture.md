@@ -1,7 +1,7 @@
 # Campus Event Ticketing Engine — System Architecture Document (SDS)
 
 **Institution:** Siddaganga Institute of Technology, Tumakuru  
-**Department:** Information Science & Engineering  
+**Department:** Computer Science & Engineering  
 **Course:** Activity Based Learning – 1 (Software Project Management: Practical Approach using DevOps Tools)  
 **Academic Year:** 2026–27  
 **Project:** Campus Event Ticketing Engine  

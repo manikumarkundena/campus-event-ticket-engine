@@ -130,23 +130,23 @@ export default function GateValidatePage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-      {/* Turnstile Kiosk Command Header */}
+      {/* Gate Verification Command Header */}
       <div className="glass-panel-elevated p-6 sm:p-7 rounded-3xl border border-emerald-500/30 shadow-glow-emerald">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-[11px] font-mono font-bold text-emerald-400 uppercase tracking-widest">
-                SIT Campus Security Turnstile
+                SIT Campus Security • Gate Checkpoint
               </span>
               <span className="text-slate-600">•</span>
               <span className="text-[11px] text-slate-400 font-mono">Terminal #01 Active</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Turnstile Access Control
+              Gate Ticket Verification
             </h1>
             <p className="text-xs text-slate-300">
-              Officer On Duty: <span className="text-white font-semibold">{user?.name || 'Gate Staff'}</span>
+              Staff On Duty: <span className="text-white font-semibold">{user?.name || 'Gate Staff'}</span>
               {' '}({user?.department || 'Campus Security Operations'})
             </p>
           </div>
@@ -167,13 +167,13 @@ export default function GateValidatePage() {
               >
                 <option value="Gate 01 • Main Quadrangle">Gate 01 • Main Quadrangle</option>
                 <option value="Gate 02 • Birla Auditorium">Gate 02 • Birla Auditorium</option>
-                <option value="Gate 03 • CS Block Turnstile">Gate 03 • CS Block Turnstile</option>
+                <option value="Gate 03 • CS Block Gate">Gate 03 • CS Block Gate</option>
                 <option value="Gate 04 • Sports Stadium">Gate 04 • Sports Stadium</option>
               </select>
 
               <button
                 onClick={() => setSoundEnabled(!soundEnabled)}
-                title={soundEnabled ? 'Mute turnstile audio cues' : 'Enable turnstile audio cues'}
+                title={soundEnabled ? 'Mute verification audio cues' : 'Enable verification audio cues'}
                 className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
               >
                 {soundEnabled ? <Volume2 className="w-4 h-4 text-emerald-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
@@ -197,9 +197,9 @@ export default function GateValidatePage() {
             <p className="text-xs font-semibold text-white truncate">{activeCheckpoint.split('•')[1] || activeCheckpoint}</p>
           </div>
           <div className="p-3 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-0.5">
-            <span className="text-[10px] text-slate-400 uppercase font-mono">Turnstile Status</span>
+            <span className="text-[10px] text-slate-400 uppercase font-mono">Scanner Status</span>
             <p className="text-xs font-bold text-emerald-400 flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5" /> SECURE ARMED
+              <ShieldCheck className="w-3.5 h-3.5" /> READY & ARMED
             </p>
           </div>
         </div>
@@ -213,7 +213,7 @@ export default function GateValidatePage() {
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
                 <Scan className="w-4 h-4 text-emerald-400" />
-                Optical Camera & Token Reader
+                QR Ticket Scanner & Pass Reader
               </span>
               <span className="text-[10px] font-mono text-slate-500">Auto-Focus Ready</span>
             </div>
@@ -270,8 +270,8 @@ export default function GateValidatePage() {
             {/* Demo Fast Verification Shortcuts */}
             <div className="pt-3 border-t border-slate-800/80 space-y-2.5">
               <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                <span>Simulation Verification Presets:</span>
+                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Verification Test Codes:</span>
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <button
@@ -365,7 +365,7 @@ export default function GateValidatePage() {
                     {result.result === 'VALID'
                       ? 'ACCESS GRANTED'
                       : result.result === 'ALREADY_USED'
-                      ? 'PASS DUPLICATE'
+                      ? 'DUPLICATE PASS'
                       : 'ACCESS DENIED'}
                   </span>
                   <h2 className="text-xl font-extrabold text-white leading-tight">{result.message}</h2>
@@ -410,9 +410,9 @@ export default function GateValidatePage() {
               <div className="w-12 h-12 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400">
                 <ShieldCheck className="w-6 h-6 text-emerald-400" />
               </div>
-              <h3 className="font-bold text-white text-base">Turnstile Ready</h3>
+              <h3 className="font-bold text-white text-base">Scanner Ready</h3>
               <p className="text-xs text-slate-400 max-w-xs">
-                Waiting for scan input. Point turnstile laser reader at pass QR code or click a test shortcut.
+                Waiting for ticket input. Scan pass QR code with optical reader or enter code manually above.
               </p>
             </div>
           )}
@@ -424,7 +424,7 @@ export default function GateValidatePage() {
         <div className="flex items-center justify-between">
           <h3 className="font-bold text-white text-base flex items-center gap-2">
             <History className="w-4 h-4 text-emerald-400" />
-            Turnstile Entry Log Feed
+            Gate Entry Verification Log
           </h3>
           <button
             onClick={loadRecentScans}

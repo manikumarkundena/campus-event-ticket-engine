@@ -46,15 +46,18 @@ export function DigitalPass({ booking }: DigitalPassProps) {
         {/* Holographic Iridescent Foil Header */}
         <div className="h-3 w-full bg-gradient-to-r from-indigo-500 via-purple-500 via-emerald-400 to-amber-400 iridescent-foil" />
 
-        {/* Top Header Strip: Institutional SIT Identity */}
+        {/* Top Header Strip: EVENTRA & Institutional SIT Context */}
         <div className="px-6 py-5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-glow-indigo">
-              SIT
+              <Ticket className="w-4 h-4" />
             </div>
             <div>
-              <p className="text-xs font-bold text-white tracking-tight uppercase">Siddaganga Institute</p>
-              <p className="text-[10px] text-slate-400 font-mono">B.H. Road, Tumakuru</p>
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs font-extrabold text-white tracking-wider">EVENTRA</span>
+                <span className="text-[10px] text-indigo-400 font-semibold">• Digital Pass</span>
+              </div>
+              <p className="text-[10px] text-slate-400">Siddaganga Institute of Technology</p>
             </div>
           </div>
           <StatusBadge status={ticket.status} />
@@ -113,7 +116,7 @@ export function DigitalPass({ booking }: DigitalPassProps) {
                   {ticket.ticketCode}
                 </p>
                 <p className="text-[11px] text-slate-400">
-                  Present this QR pass to security staff at gate turnstiles
+                  Present this QR pass for entry verification at the event gate
                 </p>
               </div>
 
@@ -132,32 +135,32 @@ export function DigitalPass({ booking }: DigitalPassProps) {
             </div>
           </div>
         ) : (
-          /* Back Face: Gate Entry Instructions & Cryptoseal Information */
+          /* Back Face: Gate Entry Instructions & Token Information */
           <div className="p-6 space-y-5 bg-slate-925">
             <div className="space-y-1">
               <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
-                GATE CLEARANCE INSTRUCTIONS
+                CAMPUS ADMISSION GUIDELINES
               </span>
-              <h3 className="text-lg font-bold text-white">SIT Campus Admission Policy</h3>
+              <h3 className="text-lg font-bold text-white">Entry & Gate Policy</h3>
             </div>
 
             <div className="space-y-3 text-xs text-slate-300 leading-relaxed bg-slate-900 p-4 rounded-2xl border border-slate-800">
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <p><strong>Single-Entry Token:</strong> This digital pass is valid for one student entry only. Duplicate scans at gate turnstiles will be locked out immediately.</p>
+                <p><strong>Single-Entry Pass:</strong> Valid for one student entry. Duplicate presentations at the gate will be flagged.</p>
               </div>
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <p><strong>Physical ID Verification:</strong> Gate staff may request college RFID identification alongside this pass.</p>
+                <p><strong>Identification:</strong> Gate staff may request college identification alongside this digital pass.</p>
               </div>
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <p><strong>Non-Transferable:</strong> Digital tickets are linked directly to your authenticated college account USN.</p>
+                <p><strong>Non-Transferable:</strong> Digital tickets are linked directly to your authenticated college account.</p>
               </div>
             </div>
 
             <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[11px] font-mono space-y-1 text-slate-400">
-              <p className="text-[10px] uppercase font-bold text-slate-500">Cryptoseal Payload Hash</p>
+              <p className="text-[10px] uppercase font-bold text-slate-500">Digital Pass Token</p>
               <p className="text-slate-200 truncate">{ticket.qrPayload}</p>
             </div>
           </div>
@@ -170,11 +173,11 @@ export function DigitalPass({ booking }: DigitalPassProps) {
             className="flex items-center gap-1.5 text-indigo-400 hover:text-indigo-300 transition font-medium"
           >
             <RefreshCw className="w-3.5 h-3.5" />
-            <span>{isFlipped ? 'Show Ticket Pass' : 'Show Entry Regulations'}</span>
+            <span>{isFlipped ? 'Show Ticket Pass' : 'Show Entry Guidelines'}</span>
           </button>
 
           <span className="flex items-center gap-1 text-emerald-400 font-medium">
-            <ShieldCheck className="w-3.5 h-3.5" /> Cryptoseal Verified
+            <ShieldCheck className="w-3.5 h-3.5" /> Verified Pass
           </span>
         </div>
       </div>
