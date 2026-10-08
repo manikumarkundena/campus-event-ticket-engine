@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: campus-ticketing
+  labels:
+    app.kubernetes.io/name: campus-event-ticketing-engine
+    app.kubernetes.io/part-of: sit-spm-abl1
+    environment: production
