@@ -1,0 +1,108 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               String      @id @default(uuid())
+  email            String      @unique
+  passwordHash     String
+  name             String
+  role             String      @default("STUDENT") // STUDENT | ORGANIZER | ADMIN | GATE_STAFF
+  department       String?
+  usn              String?     @unique
+  avatarUrl        String?
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  organizedEvents  Event[]     @relation("EventOrganizer")
+  bookings         Booking[]
+  validatedTickets Ticket[]    @relation("TicketValidator")
+  auditLogs        AuditLog[]
+
+  @@index([role])
+}
+
+model Event {
+  id                String      @id @default(uuid())
+  title             String
+  description       String
+  category          String      @default("TECHNICAL") // TECHNICAL | CULTURAL | SPORTS | WORKSHOP | HACKATHON
+  venue             String
+  startDateTime     DateTime
+  endDateTime       DateTime
+  totalCapacity     Int
+  availableCapacity Int
+  status            String      @default("DRAFT") // DRAFT | PUBLISHED | CANCELLED | COMPLETED
+  bannerUrl         String?
+  organizerId       String
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  organizer         User        @relation("EventOrganizer", fields: [organizerId], references: [id], onDelete: Cascade)
+  bookings          Booking[]
+
+  @@index([status])
+  @@index([category])
+  @@index([startDateTime])
+}
+
+model Booking {
+  id               String      @id @default(uuid())
+  bookingReference String      @unique
+  userId           String
+  eventId          String
+  status           String      @default("CONFIRMED") // CONFIRMED | CANCELLED
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  user             User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event            Event       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  ticket           Ticket?
+
+  // Critical Database constraint preventing duplicate booking by same student for same event
+  @@unique([userId, eventId])
+  @@index([userId])
+  @@index([eventId])
+}
+
+model Ticket {
+  id            String      @id @default(uuid())
+  ticketCode    String      @unique
+  qrPayload     String      @unique
+  bookingId     String      @unique
+  status        String      @default("VALID") // VALID | USED | CANCELLED
+  validatedAt   DateTime?
+  validatedById String?
+  entryNotes    String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  booking       Booking     @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  validatedBy   User?       @relation("TicketValidator", fields: [validatedById], references: [id], onDelete: SetNull)
+
+  @@index([ticketCode])
+  @@index([qrPayload])
+  @@index([status])
+}
+
+model AuditLog {
+  id         String      @id @default(uuid())
+  action     String      // USER_LOGIN, EVENT_CREATE, EVENT_PUBLISH, BOOKING_CREATED, TICKET_VALIDATED, etc.
+  entityType String      // USER, EVENT, BOOKING, TICKET, SYSTEM
+  entityId   String?
+  userId     String?
+  metadata   String?     // JSON metadata string
+  ipAddress  String?
+  createdAt  DateTime    @default(now())
+
+  user       User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([action])
+  @@index([createdAt])
+  @@index([entityType, entityId])
+}
